@@ -23,30 +23,36 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="着力于成为成长黑客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="刘金耕的博客">
-<meta property="og:url" content="http://example.com/index.html">
+<meta name="description" content="文章概述  随机部署节点 出现路由空洞的概率，以贪婪周界无状态 GPSR 算法的基础上，提出PDRP，以及证明PDRP在各个方便对GPSR的优势。 再次完善，EPDRP，综合考虑节点信息和剩余能量，使用NS2进行模拟仿真，得出结论。  总结 1.地理路由：默认知道邻居的位置和自己的位置，仅仅需要维护一个路由表，开销小效率高。 2.但是如果高频率的使用一条路径会导致某个节点消耗掉能量“死亡”，再走这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无线传感器网络地理位置路由算法研究">
+<meta property="og:url" content="http://example.com/2021/02/28/%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95%E7%A0%94%E7%A9%B6/index.html">
 <meta property="og:site_name" content="刘金耕的博客">
-<meta property="og:description" content="着力于成为成长黑客">
+<meta property="og:description" content="文章概述  随机部署节点 出现路由空洞的概率，以贪婪周界无状态 GPSR 算法的基础上，提出PDRP，以及证明PDRP在各个方便对GPSR的优势。 再次完善，EPDRP，综合考虑节点信息和剩余能量，使用NS2进行模拟仿真，得出结论。  总结 1.地理路由：默认知道邻居的位置和自己的位置，仅仅需要维护一个路由表，开销小效率高。 2.但是如果高频率的使用一条路径会导致某个节点消耗掉能量“死亡”，再走这">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="en-resource://database/1316:1">
+<meta property="og:image" content="en-resource://database/1318:1">
+<meta property="article:published_time" content="2021-02-28T08:12:20.000Z">
+<meta property="article:modified_time" content="2021-03-01T08:10:22.588Z">
 <meta property="article:author" content="刘金耕">
+<meta property="article:tag" content="论文">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="en-resource://database/1316:1">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2021/02/28/%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95%E7%A0%94%E7%A9%B6/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
-<title>刘金耕的博客</title>
+<title>无线传感器网络地理位置路由算法研究 | 刘金耕的博客</title>
   
 
 
@@ -191,16 +197,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/28/%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95%E7%A0%94%E7%A9%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -213,9 +220,9 @@
       <meta itemprop="name" content="刘金耕的博客">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/28/%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95%E7%A0%94%E7%A9%B6/" class="post-title-link" itemprop="url">无线传感器网络地理位置路由算法研究</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          无线传感器网络地理位置路由算法研究
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -245,7 +252,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><strong>文章概述</strong></p>
+        <p><strong>文章概述</strong></p>
 <ol>
 <li>随机部署节点 出现路由空洞的概率，以贪婪周界无状态 <strong>GPSR</strong> 算法的基础上，提出<strong>PDRP</strong>，以及证明PDRP在各个方便对GPSR的优势。</li>
 <li>再次完善，<strong>EPDRP</strong>，综合考虑节点信息和剩余能量，使用NS2进行模拟仿真，得出结论。</li>
@@ -309,7 +316,6 @@
 <p>六、总结和展望<br>6.1总结<br>    解决GPSR的缺点，不会扩大空洞，吞吐量更大<br>    EPDRP，加入能量参数，延长了网络的生命周期<br>6.2展望<br>GPS误差带来的影响<br>节点的状态改变与评估</p>
 <p>需要阅读的定位算法：【文献：9-12】</p>
 
-      
     </div>
 
     
@@ -317,154 +323,25 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BA%E6%96%87/" rel="tag"># 论文</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/26/%E6%8A%A4%E8%82%A4%E5%AD%A6%E4%B9%A0/" rel="prev" title="我的护肤产品单">
+                  <i class="fa fa-chevron-left"></i> 我的护肤产品单
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/26/%E6%8A%A4%E8%82%A4%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="刘金耕">
-      <meta itemprop="description" content="着力于成为成长黑客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="刘金耕的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/26/%E6%8A%A4%E8%82%A4%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">我的护肤产品单</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-02-26 14:23:24 / 修改时间：15:08:54" itemprop="dateCreated datePublished" datetime="2021-02-26T14:23:24+08:00">2021-02-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ol>
-<li>黑头</li>
-</ol>
-<p>黑头多的原因是油脂分泌旺盛，采用水杨酸可以处理。选择清浅水杨酸泥膜，配合他家的冻膜一起使用，回头看效果（我是混合油性皮肤）。</p>
-<p>2.手模</p>
-<p>选择加入烟酰胺的产品，有美白功能。</p>
-<p>3.洗面奶</p>
-<p>ponds无脑入，何时收入翻三倍再考虑更换。</p>
-<p>4.爽肤水 </p>
-<p>无印良品 85/400ml 洗澡都不心疼</p>
-<p>5.去黑眼圈</p>
-<p>the ordinary</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/24/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="刘金耕">
-      <meta itemprop="description" content="着力于成为成长黑客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="刘金耕的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/24/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" class="post-title-link" itemprop="url">第一篇文章</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-02-24 17:26:12 / 修改时间：17:29:54" itemprop="dateCreated datePublished" datetime="2021-02-24T17:26:12+08:00">2021-02-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>今天是来到上海的第二天，完成了个人网页的创建。以后的所有知识都可以在此处分享，二次学习。</p>
-<p>希望随着时间的推进，能够完成更多的学习任务，变成更好的自己。</p>
-<p><strong>特此鸣谢</strong>：我的父母，603的兄弟们~</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
