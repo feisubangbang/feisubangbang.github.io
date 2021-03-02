@@ -30,11 +30,14 @@
 <meta property="og:site_name" content="刘金耕的博客">
 <meta property="og:description" content="文章概述  随机部署节点 出现路由空洞的概率，以贪婪周界无状态 GPSR 算法的基础上，提出PDRP，以及证明PDRP在各个方便对GPSR的优势。 再次完善，EPDRP，综合考虑节点信息和剩余能量，使用NS2进行模拟仿真，得出结论。  总结 1.地理路由：默认知道邻居的位置和自己的位置，仅仅需要维护一个路由表，开销小效率高。 2.但是如果高频率的使用一条路径会导致某个节点消耗掉能量“死亡”，再走这">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="en-resource://database/1316:1">
+<meta property="og:image" content="en-resource://database/1318:1">
 <meta property="article:published_time" content="2021-02-28T08:12:20.000Z">
-<meta property="article:modified_time" content="2021-03-01T08:52:46.245Z">
+<meta property="article:modified_time" content="2021-03-02T04:59:44.803Z">
 <meta property="article:author" content="刘金耕">
 <meta property="article:tag" content="论文">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="en-resource://database/1316:1">
 
 
 <link rel="canonical" href="http://example.com/2021/02/28/%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95%E7%A0%94%E7%A9%B6/">
@@ -160,7 +163,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -236,7 +239,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-01 16:52:46" itemprop="dateModified" datetime="2021-03-01T16:52:46+08:00">2021-03-01</time>
+        <time title="修改时间：2021-03-02 12:59:44" itemprop="dateModified" datetime="2021-03-02T12:59:44+08:00">2021-03-02</time>
       </span>
 
   
@@ -260,12 +263,10 @@
 <p>一、绪论<br>1.1<br>路由协议：地理位置路由和基于拓扑路由（DSR,AODV,DSDV）<br>关键课题：无线网络中的节点定位，最简单（每个节点配置一个GPS）大多数：只在锚节点配备GPS,其它节点通过和锚节点的相对位置计算地理位置（TOA,TDOA,RSSI,超声波）<br>贪婪转发算法：<br>1.2<br>国内外研究现状<br>确保交付的路由算法：GFG,<strong>GPSR</strong>,GOAFR。如何解决空洞问题的？<br>GPSR：先使用贪婪规则，也就是哪个邻居节点离目标节点更近，就发送到哪个邻居节点，但是如果现在的节点就是最近的，那么算法机就会不知道向哪个节点传输。<br>如果不满足贪婪规则，采取周界转发模式，使用右手法则<br>右手法则：</p>
 <ul>
 <li>首先绘制平面图，没有两条相交的线</li>
-<li>当贪婪算法不起作用的时候，使用周界转发，从宏观来看就是选择靠右的方向一直走下去直到可以使用贪婪算法。</li>
+<li>当贪婪算法不起作用的时候，使用周界转发，从宏观来看就是选择靠右的方向一直走下去直到可以使用贪婪算法。<br><img src="en-resource://database/1316:1" alt="b11231cdfe15091df18c6621bae95a73.png"><br>如果y到x是贪婪算法，那么从x开始是非贪婪算法的话，就是把（y,x）这条边以x为轴旋转，（x,z）为下一跳</li>
 </ul>
-<p>如果y到x是贪婪算法，那么从x开始是非贪婪算法的话，就是把（y,x）这条边以x为轴旋转，（x,z）为下一跳</p>
 <p>能量相关路由研究现状：<br>GEAR算法<br>EBGR算法<br>【27,28,29】</p>
-<p>二、无线传感器网络概述<br>结构：在检测区域内有传感器节点<br>传感器节点将数据传给汇聚节点，汇聚节点传给internet，最后汇聚到管理节点<br>各个模块构成：</p>
-<p>传感器：感知，获取外界的信息。包括（传感器模块，数据处理，控制模块，能源供应模块，无线通信模块）<br>感知到信息，转化为数字信号给到存储器和处理器，通过网络mac收发器收集到信息<br>2.2 无线自组织网络特征</p>
+<p>二、无线传感器网络概述<br>结构：在检测区域内有传感器节点<br>传感器节点将数据传给汇聚节点，汇聚节点传给internet，最后汇聚到管理节点<br>各个模块构成：<br><img src="en-resource://database/1318:1" alt="1504668524bee8d934221e83361acb72.png"><br>传感器：感知，获取外界的信息。包括（传感器模块，数据处理，控制模块，能源供应模块，无线通信模块）<br>感知到信息，转化为数字信号给到存储器和处理器，通过网络mac收发器收集到信息<br>2.2 无线自组织网络特征</p>
 <ul>
 <li>硬件资源有限</li>
 <li>网络规模大</li>
@@ -335,9 +336,6 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/03/01/a/" rel="next" title="a">
-                  a <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
