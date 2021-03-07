@@ -157,13 +157,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -192,6 +192,100 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/07/%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E5%9C%B0%E7%90%86%E8%B7%AF%E7%94%B1-%E5%B9%BF%E8%A5%BF%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="刘金耕">
+      <meta itemprop="description" content="着力于成为成长黑客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘金耕的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/07/%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E5%9C%B0%E7%90%86%E8%B7%AF%E7%94%B1-%E5%B9%BF%E8%A5%BF%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">无线传感器地理路由 广西师范大学笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-07 21:04:56 / 修改时间：21:39:10" itemprop="dateCreated datePublished" datetime="2021-03-07T21:04:56+08:00">2021-03-07</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>一、这篇文章讲的是什么，解决了什么问题？</p>
+<p>这篇文章第一部分提升了GPSR算法（贪婪边界无状态路由），在找寻贪婪路径时的效率，引入了邻居节点坐标系。<br>给每个节点的邻居节点，划分成四个象限，如果a节点想给c节点发信息，它的邻居节点b节点在它的第三象限，那么b节点就不可能是它的贪婪路径，也即简化了贪婪这部分点的计算。<br>作者使用了一个数组【x,x,x,x】每一个数字分别代表了这个节点每个象限有多少个邻居。<br>如[1,1,2,2]第一二个象限有一个邻居，三四象限有两个邻居。<br>第二部分优化了贪婪算法的右手法则，如果D为空洞点，F为目的点，A为右手法则点，B为逆右手法则点。<br>比较AFD,BFD两个角的大小，优先选择最小的那个角，减少偏移量。</p>
+<p>二、基础知识</p>
+<p>无线传感器网络结构：传感器节点；sink节点；互联网；观测者</p>
+<p>无线传感器路由协议要完成的任务：</p>
+<ol>
+<li>建立路径<br>2 .数据通过这条路径可靠的传输<br>路由协议的重要性：无线传感器节点能量优先，采集、处理、传输数据都需要话费能量，所以路由协议要尽量简单，如果像有线网络存储全部的路由信息不现实，通常只能维护自己局部的路由信息。</li>
+</ol>
+<p>无线传感器路由协议分类：</p>
+<ol>
+<li>分层路由：把一个区域中的节点分为若干个簇，由簇头节点传给sink节点，代表算法leach算法，pegasis，TEEN,APTEEN</li>
+<li>以数据为中心的路由协议：对数据进行命名，请求发送均使用命名，不依赖节点的具体位置SPIN,改进的RUMOR协议</li>
+<li><strong>基于地理位置的路由协议：GPSR</strong></li>
+<li>服务质量路由协议：以服务质量为优先考虑原则，SAR算法是首创保证服务质量的算法，还有端到端的SPEED协议。</li>
+<li>能量感知路由协议：延长网络寿命，将剩余能量加入到节点路由选择的考量之中，EAR和EMBR</li>
+</ol>
+<p>三、提出问题</p>
+<p>GPSR会选择最近的路线，时间长了节点能量用尽，就会产生空洞。<br>空洞的概念：节点的邻居节点到达目标节点的距离均大于节点到目标点的距离。<br>GPSR解决方案：<br>使用右手法则，步骤：</p>
+<ul>
+<li>以起点到终点画线，起点为轴心，逆时针扫描距离范围内的第一个节点</li>
+<li>以节点指向上一个节点为边逆时针扫描</li>
+<li>若第二步在旋转时碰到起点与终点的连线时，跳过这条边</li>
+</ul>
+<p>目前空洞的其他处理方法</p>
+<ol>
+<li>基于泛洪算法，更多的是一跳泛洪</li>
+<li>基于周边转发：GPSR</li>
+<li>基于扩大邻居节点范围 思想是 两跳范围内是否有距离比空洞节点更近的点，若有则贪婪，没有则加大跳数，类似BFS</li>
+<li>基于代价的路由空洞处理：增加空洞附近节点的路由代价，相当于增大图中的权重，让路由算法不经常来到这里，但是可能导致：最终选择的路径很差；利用增加或减少代价预先处理网络中的路径，和最短路径相比并不理想。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
