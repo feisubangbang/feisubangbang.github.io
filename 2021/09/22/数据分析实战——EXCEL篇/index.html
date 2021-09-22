@@ -23,18 +23,24 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="着力于成为成长黑客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="刘金耕的博客">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta name="description" content="实战目的：采用EXCEL中的工具对真实数据加以分析，以加深对知识的理解并强化实用工具的熟练程度。数据来源：某公司销售额的样表。数据分析方式：回归分析、移动平均。统计分析的作用包括描述分析和推断预测。描述分析：  数值测度  集中趋势 离散程度 分布形状   图表  直方图推断预测：   抽样推断  抽样分析 假设检验   预测  相关回归  时间序列 线性回归结果MULTIPLE R：Y和X高度相">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据分析实战——EXCEL篇">
+<meta property="og:url" content="http://example.com/2021/09/22/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98%E2%80%94%E2%80%94EXCEL%E7%AF%87/index.html">
 <meta property="og:site_name" content="刘金耕的博客">
-<meta property="og:description" content="着力于成为成长黑客">
+<meta property="og:description" content="实战目的：采用EXCEL中的工具对真实数据加以分析，以加深对知识的理解并强化实用工具的熟练程度。数据来源：某公司销售额的样表。数据分析方式：回归分析、移动平均。统计分析的作用包括描述分析和推断预测。描述分析：  数值测度  集中趋势 离散程度 分布形状   图表  直方图推断预测：   抽样推断  抽样分析 假设检验   预测  相关回归  时间序列 线性回归结果MULTIPLE R：Y和X高度相">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="en-resource://database/2893:0">
+<meta property="og:image" content="en-resource://database/2895:0">
+<meta property="article:published_time" content="2021-09-22T08:47:57.000Z">
+<meta property="article:modified_time" content="2021-09-22T09:21:26.667Z">
 <meta property="article:author" content="刘金耕">
+<meta property="article:tag" content="数据分析">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="en-resource://database/2893:0">
 
 
-<link rel="canonical" href="http://example.com/archives/">
+<link rel="canonical" href="http://example.com/2021/09/22/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98%E2%80%94%E2%80%94EXCEL%E7%AF%87/">
 
 
 <script class="page-configurations">
@@ -42,11 +48,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
-<title>归档 | 刘金耕的博客</title>
+<title>数据分析实战——EXCEL篇 | 刘金耕的博客</title>
   
 
 
@@ -191,109 +197,121 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 4 篇日志。 继续努力。</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/22/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98%E2%80%94%E2%80%94EXCEL%E7%AF%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="刘金耕">
+      <meta itemprop="description" content="着力于成为成长黑客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘金耕的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据分析实战——EXCEL篇
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
+      <time title="创建时间：2021-09-22 16:47:57 / 修改时间：17:21:26" itemprop="dateCreated datePublished" datetime="2021-09-22T16:47:57+08:00">2021-09-22</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>实战目的：采用EXCEL中的工具对真实数据加以分析，以加深对知识的理解并强化实用工具的熟练程度。<br>数据来源：某公司销售额的样表。<br>数据分析方式：回归分析、移动平均。<br>统计分析的作用包括描述分析和推断预测。<br>描述分析：</p>
+<ul>
+<li><p>数值测度</p>
+<ul>
+<li>集中趋势</li>
+<li>离散程度</li>
+<li>分布形状</li>
+</ul>
+</li>
+<li><p>图表</p>
+<ul>
+<li>直方图<br>推断预测：</li>
+</ul>
+</li>
+<li><p>抽样推断</p>
+<ul>
+<li>抽样分析</li>
+<li>假设检验</li>
+</ul>
+</li>
+<li><p>预测</p>
+<ul>
+<li><p>相关回归</p>
+</li>
+<li><p>时间序列</p>
+<p>线性回归结果<br><img src="en-resource://database/2893:0" alt="f8d68e79dac346452ee3d201e3a88b11.png"><br>MULTIPLE R：Y和X高度相关。<br>R方 ：模型拟合的效果评估，越高越好。<br>n：样本数。</p>
+<p>移动平均：<br>都是根据事件发展进行预测，移动平均根据时间序列逐期推移，计算几期的平均值，进而预测发展趋势。期数少能快速反映变化，但是误差较大；期数过多较为准确但是对近期变化不敏感。<br>指数平滑：<br>对离预测期较近的数据给予较大的权重，引入α作为平滑系数。波动不大，使用小阻尼（0.1-0.3），较为平稳。<br>波动较大，使用大阻尼0.6-0.9。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>实现结果如图：<br><img src="en-resource://database/2895:0" alt="7d4e5fee2d7294dc5f0077353b87c47a.png"></p>
+<p>移动平均两次和一次指数平滑（阻尼0.1）的误差较小。<br>预测值分别为15398和15150.57</p>
+<p>具体使用哪种模型需要结合实际业务的数据灵活运用。
+    </p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-22T16:47:57+08:00"
-              content="2021-09-22">
-          09-22
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/22/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98%E2%80%94%E2%80%94EXCEL%E7%AF%87/" itemprop="url">
-            <span itemprop="name">数据分析实战——EXCEL篇</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag"># 数据分析</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/07/%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E5%9C%B0%E7%90%86%E8%B7%AF%E7%94%B1-%E5%B9%BF%E8%A5%BF%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6%E7%AC%94%E8%AE%B0/" rel="prev" title="无线传感器地理路由 广西师范大学笔记">
+                  <i class="fa fa-chevron-left"></i> 无线传感器地理路由 广西师范大学笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-07T21:04:56+08:00"
-              content="2021-03-07">
-          03-07
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/07/%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E5%9C%B0%E7%90%86%E8%B7%AF%E7%94%B1-%E5%B9%BF%E8%A5%BF%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6%E7%AC%94%E8%AE%B0/" itemprop="url">
-            <span itemprop="name">无线传感器地理路由 广西师范大学笔记</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-02-28T16:12:20+08:00"
-              content="2021-02-28">
-          02-28
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/28/%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95%E7%A0%94%E7%A9%B6/" itemprop="url">
-            <span itemprop="name">无线传感器网络地理位置路由算法研究</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T14:23:24+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/%E6%8A%A4%E8%82%A4%E5%AD%A6%E4%B9%A0/" itemprop="url">
-            <span itemprop="name">我的护肤产品单</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
 
 
 <script>
