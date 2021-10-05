@@ -226,7 +226,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-10-05 16:08:36 / 修改时间：16:25:29" itemprop="dateCreated datePublished" datetime="2021-10-05T16:08:36+08:00">2021-10-05</time>
+      <time title="创建时间：2021-10-05 16:08:36 / 修改时间：16:42:25" itemprop="dateCreated datePublished" datetime="2021-10-05T16:08:36+08:00">2021-10-05</time>
     </span>
 
   
@@ -969,7 +969,7 @@ Name: 商品价格, dtype: float64
 
 <pre><code>&lt;AxesSubplot:&gt;
 </code></pre>
-<p><img src="/images/output_23_1.png" alt="png"></p>
+<p><img src="https://i.loli.net/2021/10/05/9Ed13AfOW4GxFPl.png" alt="output_23_1.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 客单价时序 客单价 = 每个小时订单总价值/订单数量</span></span><br><span class="line">cal = data[<span class="string">&#x27;下单小时&#x27;</span>].value_counts().sort_index()</span><br></pre></td></tr></table></figure>
 
 
@@ -1044,7 +1044,7 @@ dtype: float64
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 折线图分析客单价</span></span><br><span class="line"><span class="keyword">from</span> matplotlib.pyplot <span class="keyword">import</span> MultipleLocator</span><br><span class="line">cal1 = series / cal</span><br><span class="line">cal1</span><br><span class="line">plt.figure(figsize=(<span class="number">20</span>,<span class="number">10</span>))</span><br><span class="line">plt.plot(cal1.index,cal1)</span><br><span class="line">ax=plt.gca()</span><br><span class="line">font = &#123;</span><br><span class="line">    <span class="string">&#x27;family&#x27;</span> : <span class="string">&#x27;SimHei&#x27;</span></span><br><span class="line">    ,<span class="string">&#x27;size&#x27;</span> : <span class="string">&#x27;14&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">ax2 = ax.twinx()</span><br><span class="line">ax2.set_ylabel(<span class="string">&#x27;黄色是订单数&#x27;</span>,fontdict=font)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;蓝色是客单价&#x27;</span>,fontdict=font)</span><br><span class="line"><span class="comment">#ax为两条坐标轴的实例</span></span><br><span class="line">x_major_locator = MultipleLocator(<span class="number">1</span>)</span><br><span class="line">ax.xaxis.set_major_locator(x_major_locator)</span><br><span class="line">plt.xlim(<span class="number">0</span>,<span class="number">23</span>)</span><br><span class="line">plt.plot(data[<span class="string">&#x27;下单小时&#x27;</span>].value_counts().sort_index(),c=<span class="string">&#x27;orange&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/output_29_0.png" alt="png"></p>
+<p><img src="https://i.loli.net/2021/10/05/lSbjCPsoYAHE4Xg.png" alt="output_29_0.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 因为商品编号唯一 所以采用商品编号作为sku  10003959 10004416 10007195 10003671 10006959</span></span><br><span class="line">data[<span class="string">&#x27;商品编号&#x27;</span>].value_counts().head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 
 
@@ -1065,7 +1065,7 @@ Name: 商品编号, dtype: int64
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看商品10003959随着时间的波动 横坐标时间 纵坐标销量</span></span><br><span class="line">data[(data[<span class="string">&#x27;商品编号&#x27;</span>] == <span class="number">10003959</span>) &amp; (data[<span class="string">&#x27;下单小时&#x27;</span>] == <span class="number">0</span>)][<span class="string">&#x27;商品编号&#x27;</span>].count()</span><br><span class="line"><span class="built_in">list</span> = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">24</span>):</span><br><span class="line">    <span class="built_in">list</span>.append(data[(data[<span class="string">&#x27;商品编号&#x27;</span>] == <span class="number">10003959</span>) &amp; (data[<span class="string">&#x27;下单小时&#x27;</span>] == i)][<span class="string">&#x27;商品编号&#x27;</span>].count())</span><br><span class="line">series1 = pd.Series(<span class="built_in">list</span>)</span><br><span class="line">plt.figure(figsize=(<span class="number">20</span>,<span class="number">5</span>))</span><br><span class="line">plt.plot(series1)</span><br><span class="line">ax = plt.gca()</span><br><span class="line">x_major_locator = MultipleLocator(<span class="number">1</span>)</span><br><span class="line">ax.xaxis.set_major_locator(x_major_locator)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/output_31_0.png" alt="png"></p>
+<p><img src="https://i.loli.net/2021/10/05/oLIKnwfqXrPVCBU.png" alt="output_31_0.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对地区进行分析</span></span><br><span class="line"><span class="built_in">list</span> = data[<span class="string">&#x27;联系地址&#x27;</span>].<span class="built_in">str</span>.split(expand=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 
 
@@ -1305,7 +1305,7 @@ Name: 一级地址, dtype: int64
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">font = &#123;</span><br><span class="line">    <span class="string">&#x27;family&#x27;</span> : <span class="string">&#x27;SimHei&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;size&#x27;</span> : <span class="string">&#x27;8&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">plt.rc(<span class="string">&#x27;font&#x27;</span>,**font)</span><br><span class="line">plt.figure(figsize=(<span class="number">20</span>,<span class="number">8</span>))</span><br><span class="line">plt.bar(series2.index,series2)</span><br><span class="line">plt.xticks(rotation=<span class="number">30</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/output_36_0.png" alt="png"></p>
+<p><img src="https://i.loli.net/2021/10/05/ag8fiDRZ9qyoKTv.png" alt="output_36_0.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可以看出 广东省是最大的订单来源，渗透率较高</span></span><br><span class="line"><span class="comment"># 数据分析总结</span></span><br><span class="line"><span class="comment"># 1.一天中12-14点 19-23点订单量最高 //用户的购物习惯</span></span><br><span class="line"><span class="comment"># 2.sku  10003959 10004416 10007195 10003671 10006959 这几款商品销量最好</span></span><br><span class="line"><span class="comment"># 3.6点 23点客单价较高 20点客单价最低 </span></span><br><span class="line"><span class="comment"># 4.订单量过千的省份 广东 浙江 江苏 上海，</span></span><br></pre></td></tr></table></figure>
 
       
